@@ -39,7 +39,7 @@ git clone https://github.com/naisy/donkeycar_docker
 ```
 *   Docker build  
 ```
-cd ~/github/donkeycar_docker
+cd ~/github/donkeycar_docker/jetson
 sudo docker build -t donkeycar-jp45 -f Dockerfile .
 ```
 *   Create container  
