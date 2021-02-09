@@ -94,3 +94,14 @@ xterm
 ```
 The xterm application will appear on your PC screen.
 
+
+If you get error message after `ssh -CY` login, please ignore.  
+This message will appear if your pc has no nvidia driver.
+```
+Xlib:  extension "NV-GLX" missing on display "localhost:10.0".
+```
+See also:
+*   [https://forums.developer.nvidia.com/t/ssh-x-problems/158038](https://forums.developer.nvidia.com/t/ssh-x-problems/158038)  
+*   [https://www.linuxquestions.org/questions/linux-general-1/nv-glx-missing-in-remote-connections-4175463926/](https://www.linuxquestions.org/questions/linux-general-1/nv-glx-missing-in-remote-connections-4175463926/)  
+*   [https://stackoverflow.com/questions/23260349/opengl-glut-over-ssh-seg-faulting](https://stackoverflow.com/questions/23260349/opengl-glut-over-ssh-seg-faulting)
+
