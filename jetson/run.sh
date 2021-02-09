@@ -1,6 +1,6 @@
 #!/bin/bash
 XSOCK=/tmp/.X11-unix
-XAUTH_FILE=.docker.xauth
+XAUTH_FILE=.Xauthority
 HOST_USER_HOME=/home/$(getent passwd 1000 | cut -d: -f1)
 HOST_USER_XAUTH=$HOST_USER_HOME/$XAUTH_FILE
 HOST_ROOT_XAUTH=/root/$XAUTH_FILE

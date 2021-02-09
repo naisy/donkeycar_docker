@@ -15,22 +15,8 @@ If you want to use different username, edit files as you like.
 If you want to use other environment (jetpack, base-image, hardware), you should check the "i2c" group id and match it. Of course, other group ids. (check group id of host os and edit dockerfile)
 
 ## Setup
-*   Generate xauth key  
-```
-####################
-# login user (Desktop login GUI terminal)
-####################
-touch $HOME/.docker.xauth
-xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $HOME/.docker.xauth nmerge -
-```
-```
-####################
-# root user (Desktop login GUI terminal)
-####################
-sudo su
-touch $HOME/.docker.xauth
-xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $HOME/.docker.xauth nmerge -
-```
+*   Login Jetson (GUI login or ssh remote login)
+
 *   git clone
 ```
 mkdir ~/github
@@ -45,7 +31,6 @@ sudo docker build -t donkeycar-jp45 -f Dockerfile .
 *   Create container  
 `~/data` will be created as a shared directory for docker container and jetson.  
 ```
-# Desktop login GUI terminal
 sudo su
 ./run.sh
 ```
@@ -89,4 +74,21 @@ cd ~/mycar
 python manage.py drive
 ```
 After that, you can access the http\://xxx.xxx.xxx.xxx:8887 in your web browser and drive.
+
+
+## Transfer X window application
+If you want to use GUI application on docker container, do the following:
+```
+# on PC terminal
+ssh -CY jetson@xxx.xxx.xxx.xxx
+
+env | grep DISPLAY # check DISPLAY value
+sudo docker ps -a # check docker container id
+sudo docker start CONTAINER_ID
+sudo docker exec -it CONTAINER_ID /bin/bash
+
+export DISPLAY=localhost:10 # set DISPLAY value
+xterm
+```
+The xterm application will appear on your PC screen.
 

@@ -1,23 +1,4 @@
 ########################################
-# Don't forget to make xauth file before make docker container.
-########################################
-# This xauth setting needs for window applications.
-
-####################
-# login user (Desktop login GUI terminal)
-####################
-#touch $HOME/.docker.xauth
-#xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $HOME/.docker.xauth nmerge -
-
-####################
-# root user (Desktop login GUI terminal)
-####################
-#sudo su
-#touch $HOME/.docker.xauth
-#xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $HOME/.docker.xauth nmerge -
-
-
-########################################
 # Docker build
 ########################################
 #time sudo docker build -t donkeycar-jp45 -f Dockerfile .
@@ -109,7 +90,6 @@ RUN sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' /home/$USERNAME/
 && sed -i 's/PS1='\''\${debian_chroot:+(\$debian_chroot)}\\\[\\033\[01;32m\\\]\\u@\\h\\\[\\033\[00m\\\]:\\\[\\033\[01;34m\\\]\\w\\\[\\033\[00m\\\]\\\$ '\''/PS1='\''\${debian_chroot:+(\$debian_chroot)}\\\[\\033\[01;32m\\\]\\u@\\\[\\033\[01;31m\\\]docker\\\[\\033\[00m\\\]:\\\[\\033\[01;35m\\\]\\w\\\[\\033\[00m\\\]\\\$ '\''/g' /home/$USERNAME/.bashrc \
 && sed -i 's/alias ls='\''ls --color=auto'\''/alias ls='\''ls -asiF --color=auto'\''/g' /home/$USERNAME/.bashrc \
 && echo 'alias xterm='"'"'xterm -fa '"'"'Monospace'"'"' -fs 10'"'"'\n' >> /home/$USERNAME/.bashrc \
-&& echo 'export XAUTHORITY=$HOME/.docker.xauth' >> /home/$USERNAME/.bashrc \
 && echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/lib' >> /home/$USERNAME/.bashrc \
 && echo 'export LANG=en_US.UTF-8' >> /home/$USERNAME/.bashrc \
 && echo 'export NO_AT_BRIDGE=1' >> /home/$USERNAME/.bashrc \
@@ -140,7 +120,6 @@ RUN sed -i 's/xterm-color) color_prompt=yes;;/xterm-color|\*-256color) color_pro
 && sed -i 's/PS1='\''\${debian_chroot:+(\$debian_chroot)}\\\[\\033\[01;32m\\\]\\u@\\h\\\[\\033\[00m\\\]:\\\[\\033\[01;34m\\\]\\w\\\[\\033\[00m\\\]\\\$ '\''/PS1='\''\${debian_chroot:+(\$debian_chroot)}\\\[\\033\[01;37m\\\]\\u@\\\[\\033\[01;31m\\\]docker\\\[\\033\[00m\\\]:\\\[\\033\[01;35m\\\]\\w\\\[\\033\[00m\\\]\\\$ '\''/g' /root/.bashrc \
 && sed -i 's/alias ls='\''ls --color=auto'\''/alias ls='\''ls -asiF --color=auto'\''/g' /root/.bashrc \
 && echo 'alias xterm='"'"'xterm -fa '"'"'Monospace'"'"' -fs 10'"'"'\n' >> /root/.bashrc \
-&& echo 'export XAUTHORITY=$HOME/.docker.xauth' >> /root/.bashrc \
 && echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/lib' >> /root/.bashrc \
 && echo 'export LANG=en_US.UTF-8' >> /root/.bashrc \
 && echo 'export NO_AT_BRIDGE=1' >> /root/.bashrc \
