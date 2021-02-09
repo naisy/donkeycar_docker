@@ -17,7 +17,7 @@ if [ ! -d "$HOST_MOUNT_PATH" ]; then
     chown $(getent passwd 1000 | cut -d: -f1):$(getent group 1000 | cut -d: -f1) $HOST_MOUNT_PATH
 fi
 
-IMG=naisy/donkeycar-jp45
+IMG=donkeycar-jp45
 
 docker run \
     --runtime=nvidia \
