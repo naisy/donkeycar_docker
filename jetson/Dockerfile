@@ -346,5 +346,5 @@ CMD bash -c "/bin/bash"
 ########################################
 # Packages
 ########################################
-RUN apt-get -y install vim less htop unzip locate git curl wget arp-scan screen
+RUN apt-get -y install vim less htop unzip locate git curl wget arp-scan
 
