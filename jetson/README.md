@@ -82,11 +82,13 @@ If you want to use GUI application on docker container, do the following:
 # on PC terminal
 ssh -CY jetson@xxx.xxx.xxx.xxx
 
+#(Jetson)
 env | grep DISPLAY # check DISPLAY value
 sudo docker ps -a # check docker container id
 sudo docker start CONTAINER_ID
 sudo docker exec -it CONTAINER_ID /bin/bash
 
+#(docker)
 export DISPLAY=localhost:10 # set DISPLAY value
 xterm
 ```
