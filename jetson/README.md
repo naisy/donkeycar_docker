@@ -2,11 +2,17 @@
 base-image: nvidia:l4t-ml
 
 checked:
-*   recording
+*   donkeycar 4.2
+    *   recording - ok
+    *   training - not checked (on pc)
+    *   autonomous driving - not checked
+*   donkeycar 3.1.5 overdrive
+    *   recording - ok
+    *   training - ok (on pc)
+    *   autonomous driving - ok
 
-not checked:
-*   training
-*   autonomous driving
+Known issues:
+*   When the automatic driving program is terminated, the camera termination process may freeze and a core dump may be output.
 
 ## Environment
 *   Username jetson  
